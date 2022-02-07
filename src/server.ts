@@ -1,14 +1,19 @@
 import * as Database from 'better-sqlite3';
-import { getConfig, getPathFromImplicit } from './util';
-
-const config = getConfig();
+import { getConfig, getPathFromImplicit, getVerbose } from './util';
 
 enum State { 'pluck', 'expand', 'raw' }
 
-const db = new Database(config.debug ? ':memory:' : getPathFromImplicit(config.filepath, config.filename), {
+const config = getConfig();
+const verbose = getVerbose(config.verbose);
+verbose('Using config', config);
+
+const filepath = config.debug ? ':memory:' : getPathFromImplicit(config.filepath, config.filename);
+verbose(`Using database at ${filepath}`);
+
+const db = new Database(filepath, {
   readonly: config.readonly,
   timeout: config.timeout,
-  verbose: config.debug ? console.log : undefined,
+  verbose: config.debug || config.verbose ? console.log : undefined,
 });
 
 global.exports('is_open', () => db.open)
