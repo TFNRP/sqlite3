@@ -1,0 +1,25 @@
+{
+  "name": "@pmarp/sqlite3",
+  "version": "0.0.1",
+  "description": "SQLite3 FiveM library",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "fivem",
+    "sqlite",
+    "sqlite3"
+  ],
+  "author": "Reece Stokes <hagen@paw.bot>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "better-sqlite3": "^7.5.0",
+    "decamelize": "^6.0.0"
+  },
+  "devDependencies": {
+    "@citizenfx/server": "^2.0.5303-1",
+    "@types/better-sqlite3": "^7.4.2",
+    "typescript": "^4.5.5"
+  }
+}
